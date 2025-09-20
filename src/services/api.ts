@@ -87,10 +87,10 @@ class ApiService {
     try {
       if (slug) {
         const posts = await this.getPostsByCategory(slug);
-        return posts
+        return posts.slice(0, 3);
       }
 
-      const allPostsResponse = await this.getAllPosts({ limit: 3 }); // Buscar mais posts para relacionados
+      const allPostsResponse = await this.getAllPosts({ limit: 3 }); // Buscar 3 posts para relacionados
       return allPostsResponse.posts;
     } catch (error) {
       console.error('Erro ao buscar posts relacionados:', error);

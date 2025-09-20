@@ -117,13 +117,12 @@ const BlogPostPage = async ({ params }: PageProps) => {
   const relatedPosts = await apiService.getRelatedPosts(post.category.slug);
 
   return (
-    <main className="relative">
+    <main className="">
       <img
         src="/svg/gradient.svg"
-        className="w-full absolute mx-auto -z-10"
-        alt=""
+        className="absolute inset-0 -z-10 mx-auto w-full"
+        alt="Elemento decorativo de fundo"
       />
-
       <BlogPostContent post={post} relatedPosts={relatedPosts} />
     </main>
   );

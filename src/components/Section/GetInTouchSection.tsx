@@ -21,7 +21,7 @@ export const GetInTouchSection = () => {
           </div>
         </Slide>
 
-        <Slide direction="right" duration={800} delay={600} triggerOnce>
+        <Slide direction="down" duration={800} delay={600} triggerOnce>
           <div className="flex flex-col justify-center items-center">
             <ul className="flex flex-col gap-3">
               <Fade cascade duration={500} delay={800} triggerOnce>

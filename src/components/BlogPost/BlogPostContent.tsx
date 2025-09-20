@@ -15,7 +15,7 @@ export const BlogPostContent = ({
   relatedPosts,
 }: BlogPostContentProps) => {
   return (
-    <section className="main_container mx-auto py-20 relative mt-20">
+    <section className="main_container mx-auto py-20 mt-20 ">
       {/* Hero Section com título e imagem */}
       <Fade cascade duration={400} delay={1000} triggerOnce>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reverse">

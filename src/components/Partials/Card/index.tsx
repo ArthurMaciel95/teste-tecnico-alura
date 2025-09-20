@@ -23,7 +23,7 @@ export const Card = ({
   return (
     <Fade duration={600} delay={animationDelay} triggerOnce>
       <Link href={href || "#"} aria-label={`Ler mais sobre: ${title}`}>
-        <article className="border border-brand-blue-500 bg-brand-background rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2   ">
+        <article className="border border-brand-blue-500 min-h-[470px] bg-brand-background rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2   ">
           <div className="relative overflow-hidden ">
             <img
               src={img}
@@ -38,7 +38,7 @@ export const Card = ({
               {category}
             </span>
           </div>
-          <h2 className="font-bold text-xl mt-4 mb-2 chakra-petch line-clamp-2">
+          <h2 className="font-bold text-xl mt-4 mb-2 chakra-petch line-clamp-2 min-h-[60px]">
             {title}
           </h2>
           <p className="text-brand-blue-300 line-clamp-4">

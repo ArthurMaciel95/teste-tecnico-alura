@@ -70,6 +70,7 @@
 
 [data-theme="dark"] {
   /* Dark theme */
+  background-color: #0a0d14;
   --background: #0a0a0a;
   --foreground: #ededed;
   --background-secondary: #1a1a1a;
@@ -114,7 +115,7 @@
     --secondary-foreground: #0a0a0a;
 
     /* Cores da marca ajustadas para dark mode */
-    --color-brand-blue-300: #8b9dc3;
+    --color-brand-blue-300: #132239;
     --color-brand-blue-500: #22d3ee;
     --color-brand-blue-600: #60a5fa;
     --color-brand-gray-100: #d1d5db;
@@ -144,11 +145,6 @@
   --color-brand-blue-600: var(--color-brand-blue-600);
   --color-brand-gray-100: var(--color-brand-gray-100);
   --color-brand-purple: var(--color-brand-purple);
-}
-
-* {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px;
 }
 
 body {
