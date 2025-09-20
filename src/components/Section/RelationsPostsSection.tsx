@@ -11,8 +11,8 @@ export const RelationsPostsSection = ({
 }: RelationsPostsSectionProps) => {
   return (
     <section className="  ">
-      <div className="grid grid-cols-1  lg:grid-cols-3 gap-8">
-        {RelationsPosts.map((post) => (
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {RelationsPosts.map((post, index) => (
           <Card
             key={post.id}
             title={post.title}
@@ -21,6 +21,7 @@ export const RelationsPostsSection = ({
             img={post.imageUrl || "/temp/post-image.png"}
             slug={`/blog/${post.id}`}
             description={post.content}
+            animationDelay={index * 150}
           />
         ))}
       </div>

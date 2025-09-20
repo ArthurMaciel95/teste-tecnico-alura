@@ -3,6 +3,7 @@ import { Inter, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { StickyHeaderWrapper } from "../components/Header/StickyHeaderWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -132,7 +133,7 @@ export default function RootLayout({
           Pular para o conteúdo principal
         </a>
         <Header />
-        {children}
+        <StickyHeaderWrapper>{children}</StickyHeaderWrapper>
         <Footer />
       </body>
     </html>

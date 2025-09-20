@@ -43,8 +43,8 @@ export const PostSection = async ({
       ) : (
         <>
           {/* Lista de posts */}
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-            {postsData.map((post) => (
+          <div id="blog" className="grid md:grid-cols-3 grid-cols-1 gap-8">
+            {postsData.map((post, index) => (
               <Card
                 key={post.id}
                 img={post.imageUrl || "/temp/post-image.png"}
@@ -52,6 +52,7 @@ export const PostSection = async ({
                 description={post.content}
                 category={post.category.name}
                 href={`/blog/${post.id}`}
+                animationDelay={index * 200}
               />
             ))}
           </div>

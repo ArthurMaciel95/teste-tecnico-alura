@@ -59,7 +59,7 @@
   --primary-foreground: #ffffff;
   --secondary: #6e859f;
   --secondary-foreground: #ffffff;
-  
+
   /* Cores da marca (mantidas) */
   --color-brand-blue-300: #6e859f;
   --color-brand-blue-500: #1ca7c8;
@@ -85,7 +85,7 @@
   --primary-foreground: #0a0a0a;
   --secondary: #8b9dc3;
   --secondary-foreground: #0a0a0a;
-  
+
   /* Cores da marca ajustadas para dark mode */
   --color-brand-blue-300: #8b9dc3;
   --color-brand-blue-500: #22d3ee;
@@ -112,7 +112,7 @@
     --primary-foreground: #0a0a0a;
     --secondary: #8b9dc3;
     --secondary-foreground: #0a0a0a;
-    
+
     /* Cores da marca ajustadas para dark mode */
     --color-brand-blue-300: #8b9dc3;
     --color-brand-blue-500: #22d3ee;
@@ -144,6 +144,11 @@
   --color-brand-blue-600: var(--color-brand-blue-600);
   --color-brand-gray-100: var(--color-brand-gray-100);
   --color-brand-purple: var(--color-brand-purple);
+}
+
+* {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {

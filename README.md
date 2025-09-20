@@ -209,6 +209,21 @@ O projeto consome a API externa para carregar os posts:
 - ✅ **Cache Strategy** com revalidação inteligente
 - ✅ **Bundle Splitting** automático do Next.js
 
+### 🏆 Resultados do Google Lighthouse
+
+Os testes de performance foram realizados usando o Google Lighthouse integrado ao navegador, demonstrando excelentes resultados em todas as métricas:
+
+![Lighthouse Performance Test](public/temp/lighthouse.png)
+
+**Métricas Avaliadas:**
+
+- **Performance**: Velocidade de carregamento e otimizações
+- **Accessibility**: Conformidade com padrões de acessibilidade
+- **Best Practices**: Implementação de boas práticas web
+- **SEO**: Otimização para mecanismos de busca
+
+> 💡 **Nota**: O teste foi executado em ambiente de produção para garantir resultados precisos da performance real da aplicação.
+
 ---
 
 ## 🎨 Design System
