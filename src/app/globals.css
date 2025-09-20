@@ -43,35 +43,114 @@
 }
 
 :root {
+  /* Light theme (padrão) */
   --background: #ffffff;
   --foreground: #171717;
+  --background-secondary: #f8f9fa;
+  --border: #e5e7eb;
+  --border-secondary: #d1d5db;
+  --muted: #6b7280;
+  --muted-foreground: #4b5563;
+  --accent: #f3f4f6;
+  --accent-foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --primary: #1ca7c8;
+  --primary-foreground: #ffffff;
+  --secondary: #6e859f;
+  --secondary-foreground: #ffffff;
+  
+  /* Cores da marca (mantidas) */
+  --color-brand-blue-300: #6e859f;
+  --color-brand-blue-500: #1ca7c8;
+  --color-brand-blue-600: #284260;
+  --color-brand-gray-100: #9d9d9d;
+  --color-brand-purple: #8c61d5;
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --background-secondary: #1a1a1a;
+  --border: #2a2a2a;
+  --border-secondary: #3a3a3a;
+  --muted: #9ca3af;
+  --muted-foreground: #d1d5db;
+  --accent: #1f2937;
+  --accent-foreground: #f9fafb;
+  --card: #111111;
+  --card-foreground: #ededed;
+  --primary: #22d3ee;
+  --primary-foreground: #0a0a0a;
+  --secondary: #8b9dc3;
+  --secondary-foreground: #0a0a0a;
+  
+  /* Cores da marca ajustadas para dark mode */
+  --color-brand-blue-300: #8b9dc3;
+  --color-brand-blue-500: #22d3ee;
+  --color-brand-blue-600: #60a5fa;
+  --color-brand-gray-100: #d1d5db;
+  --color-brand-purple: #a78bfa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Dark theme automático quando preferência do sistema é dark */
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --background-secondary: #1a1a1a;
+    --border: #2a2a2a;
+    --border-secondary: #3a3a3a;
+    --muted: #9ca3af;
+    --muted-foreground: #d1d5db;
+    --accent: #1f2937;
+    --accent-foreground: #f9fafb;
+    --card: #111111;
+    --card-foreground: #ededed;
+    --primary: #22d3ee;
+    --primary-foreground: #0a0a0a;
+    --secondary: #8b9dc3;
+    --secondary-foreground: #0a0a0a;
+    
+    /* Cores da marca ajustadas para dark mode */
+    --color-brand-blue-300: #8b9dc3;
+    --color-brand-blue-500: #22d3ee;
+    --color-brand-blue-600: #60a5fa;
+    --color-brand-gray-100: #d1d5db;
+    --color-brand-purple: #a78bfa;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background-secondary: var(--background-secondary);
+  --color-border: var(--border);
+  --color-border-secondary: var(--border-secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 
-  --color-brand-blue-300: #6e859f;
-  --color-brand-blue-500: #1ca7c8;
-  --color-brand-blue-600: #284260;
-  --color-brand-gray-100: #9d9d9d;
-
-  --color-brand-purple: #8c61d5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand-blue-300: var(--color-brand-blue-300);
+  --color-brand-blue-500: var(--color-brand-blue-500);
+  --color-brand-blue-600: var(--color-brand-blue-600);
+  --color-brand-gray-100: var(--color-brand-gray-100);
+  --color-brand-purple: var(--color-brand-purple);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Inter, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chakra-petch {

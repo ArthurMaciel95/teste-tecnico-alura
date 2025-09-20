@@ -15,25 +15,91 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const id = resolvedParams.id;
 
-  // fetch post information
-  const post = await apiService.getPostById(id);
+  try {
+    // fetch post information
+    const post = await apiService.getPostById(id);
 
-  return {
-    title: `FERNANDA MARSCHETI | ${post?.title}`,
-    description: `${post?.content?.substring(0, 160)}...`,
-    openGraph: {
-      title: `FERNANDA MARSCHETI | ${post?.title}`,
-      description: `${post?.content?.substring(0, 160)}...`,
-      images: [
-        {
-          url: post?.imageUrl || "/temp/post-image.png",
-          width: 1200,
-          height: 627,
-          alt: post?.title,
+    if (!post) {
+      return {
+        title: "Post não encontrado - Fernanda Mascheti",
+        description: "O post solicitado não foi encontrado.",
+      };
+    }
+
+    const baseUrl = "https://teste-tecnico-alura-two.vercel.app";
+    const postImageUrl = post.imageUrl
+      ? post.imageUrl.startsWith("http")
+        ? post.imageUrl
+        : `${baseUrl}${post.imageUrl}`
+      : `${baseUrl}/seo.png`;
+
+    const description = post.content
+      ? post.content.replace(/<[^>]*>/g, "").substring(0, 160) + "..."
+      : `Leia o post "${post.title}" no blog da Fernanda Mascheti.`;
+
+    return {
+      title: `${post.title} | Fernanda Mascheti`,
+      description,
+      keywords: [
+        ...(post.tags?.map((tag) => tag.name) || []),
+        post.category?.name,
+        "blog",
+        "tecnologia",
+        "programação",
+      ].filter(Boolean),
+      authors: [{ name: "Fernanda Mascheti" }],
+      creator: "Fernanda Mascheti",
+      publisher: "Fernanda Mascheti",
+      metadataBase: new URL(baseUrl),
+      alternates: {
+        canonical: `/blog/${id}`,
+      },
+      openGraph: {
+        title: `${post.title} | Fernanda Mascheti`,
+        description,
+        url: `${baseUrl}/blog/${id}`,
+        siteName: "Fernanda Mascheti",
+        images: [
+          {
+            url: postImageUrl,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+        locale: "pt_BR",
+        type: "article",
+        publishedTime: post.createdAt,
+        authors: ["Fernanda Mascheti"],
+        section: post.category?.name,
+        tags: post.tags?.map((tag) => tag.name),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${post.title} | Fernanda Mascheti`,
+        description,
+        images: [postImageUrl],
+        creator: "@fernandamascheti",
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
         },
-      ],
-    },
-  };
+      },
+    };
+  } catch (error) {
+    console.error("Erro ao gerar metadata para o post:", error);
+    return {
+      title: "Erro ao carregar post - Fernanda Mascheti",
+      description: "Ocorreu um erro ao carregar o post solicitado.",
+    };
+  }
 }
 
 const BlogPostPage = async ({ params }: PageProps) => {
@@ -50,11 +116,13 @@ const BlogPostPage = async ({ params }: PageProps) => {
   const relatedPosts = await apiService.getRelatedPosts(post.category.slug);
 
   return (
-    <main className="min-h-screen mt-20">
-      <section className="main_container mx-auto py-20 relative">
-        <div className="absolute   mx-auto -z-10">
-          <img src="/svg/gradient.svg" className="w-full" alt="" />
-        </div>
+    <main className=" relative">
+      <img
+        src="/svg/gradient.svg"
+        className="w-full absolute   mx-auto -z-10"
+        alt=""
+      />
+      <section className="main_container mx-auto py-20 relative  mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reverse">
           <div className="flex flex-col lg:order-1 order-2">
             <h1 className="text-5xl font-bold chakra-petch mb-6 text-brand-blue-600 max-w-[536px]">

@@ -101,6 +101,28 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#2563eb" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('theme');
+                  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  
+                  if (savedTheme === 'dark' || savedTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                  } else if (!savedTheme || savedTheme === 'system') {
+                    if (systemTheme === 'dark') {
+                      document.documentElement.removeAttribute('data-theme');
+                    }
+                  }
+                } catch (error) {
+                  console.warn('Erro ao inicializar tema:', error);
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${chakraPetch.variable} antialiased`}>
         <a

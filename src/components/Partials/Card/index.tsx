@@ -19,7 +19,7 @@ export const Card = ({
 }: CardProps) => {
   return (
     <Link href={href || "#"} aria-label={`Ler mais sobre: ${title}`}>
-      <article className="border border-brand-blue-500 bg-white rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2">
+      <article className="border border-brand-blue-500 bg-brand-background rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2">
         <div className="relative overflow-hidden ">
           <img
             src={img}
