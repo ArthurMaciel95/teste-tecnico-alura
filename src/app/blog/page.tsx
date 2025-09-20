@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FilterSectionAdvanced } from "@/components/Section/FilterSectionAdvanced";
 import { PostSection } from "@/components/Section/PostSection";
 import { GetInTouchSection } from "@/components/Section/GetInTouchSection";
 import { apiService } from "@/services/api";
@@ -52,14 +51,7 @@ export default function BlogPage() {
         className="absolute inset-0 -z-10 mx-auto w-full"
         alt=""
       />
-
-      <FilterSectionAdvanced
-        onFilterChange={handleFilterChange}
-        onSearchChange={handleSearchChange}
-      />
-
       <PostSection posts={filteredPosts} showPagination={true} />
-
       <GetInTouchSection />
     </main>
   );

@@ -16,28 +16,35 @@ export const GetInTouchSection = () => {
         <div className="flex flex-col justify-center items-center">
           <ul className="flex flex-col gap-3">
             <li className="flex items-center gap-4 ">
-              <img src="/svg/mail.svg" alt="" />
+              <img src="/svg/mail.svg" alt="Ícone de email" />
               <Link
                 href="mailto:contato@exemplo.com"
                 className=" underline font-normal text-base text-brand-blue-300"
+                aria-label="Enviar email para contato@exemplo.com"
               >
                 contato@exemplo.com
               </Link>
             </li>
             <li className="flex items-center gap-4 ">
-              <img src="/svg/linkedin.svg" alt="" />
+              <img src="/svg/linkedin.svg" alt="Ícone do LinkedIn" />
               <Link
                 href="https://www.linkedin.com/in/exemplo"
                 className=" underline font-normal text-base text-brand-blue-300"
+                aria-label="Visitar perfil no LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 /Fernanda Mascheti
               </Link>
             </li>
             <li className="flex items-center gap-4 ">
-              <img src="/svg/github.svg" alt="" />
+              <img src="/svg/github.svg" alt="Ícone do GitHub" />
               <Link
                 href="https://github.com/exemplo"
                 className="underline font-normal text-base text-brand-blue-300"
+                aria-label="Visitar perfil no GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 fernandamascheti
               </Link>

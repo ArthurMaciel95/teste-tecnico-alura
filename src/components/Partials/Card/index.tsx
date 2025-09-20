@@ -18,16 +18,19 @@ export const Card = ({
   href,
 }: CardProps) => {
   return (
-    <Link href={href || "#"}>
-      <div className="border border-brand-blue-500 bg-white rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer">
+    <Link href={href || "#"} aria-label={`Ler mais sobre: ${title}`}>
+      <article className="border border-brand-blue-500 bg-white rounded-lg p-6 hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)] transition-shadow duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2">
         <div className="relative overflow-hidden ">
           <img
             src={img}
-            alt={title}
-            className="w-full max-h-50 object-cover w-[352px] h-[200px]"
+            alt={`Imagem do post: ${title}`}
+            className="w-full max-h-50 object-cover h-[200px]"
             title={title}
           />
-          <span className="absolute bottom-0 right-0 bg-brand-blue-500 text-white font-normal chakra-petch h-[30px] flex justify-center items-center py-2 px-4">
+          <span
+            className="absolute bottom-0 right-0 bg-brand-blue-500 text-white font-normal chakra-petch h-[30px] flex justify-center items-center py-2 px-4"
+            aria-label={`Categoria: ${category}`}
+          >
             {category}
           </span>
         </div>
@@ -42,7 +45,7 @@ export const Card = ({
             Ler mais
           </span>
         </div>
-      </div>
+      </article>
     </Link>
   );
 };

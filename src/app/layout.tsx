@@ -103,6 +103,12 @@ export default function RootLayout({
         <meta name="theme-color" content="#2563eb" />
       </head>
       <body className={`${inter.variable} ${chakraPetch.variable} antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-brand-blue-600 text-white p-3 z-50"
+        >
+          Pular para o conteúdo principal
+        </a>
         <Header />
         {children}
         <Footer />

@@ -2,17 +2,18 @@ import React from "react";
 import { apiService } from "@/services/api";
 import { RelationsPostsSection } from "@/components/Section/RelationsPostsSection";
 import { notFound } from "next/navigation";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const id = params.id;
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
 
   // fetch post information
   const post = await apiService.getPostById(id);
@@ -36,18 +37,17 @@ export async function generateMetadata({
 }
 
 const BlogPostPage = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+
   // Buscar o post específico
-  const post = await apiService.getPostById(params.id);
+  const post = await apiService.getPostById(resolvedParams.id);
 
   if (!post) {
     notFound();
   }
 
   // Buscar posts relacionados
-  const relatedPosts = await apiService.getRelatedPosts(
-    params.id,
-    post.category.name
-  );
+  const relatedPosts = await apiService.getRelatedPosts(post.category.slug);
 
   return (
     <main className="min-h-screen mt-20">
@@ -55,8 +55,8 @@ const BlogPostPage = async ({ params }: PageProps) => {
         <div className="absolute   mx-auto -z-10">
           <img src="/svg/gradient.svg" className="w-full" alt="" />
         </div>
-        <div className="grid grid-cols-2 gap-8">
-          <div className="flex flex-col">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reverse">
+          <div className="flex flex-col lg:order-1 order-2">
             <h1 className="text-5xl font-bold chakra-petch mb-6 text-brand-blue-600 max-w-[536px]">
               {post.title}
             </h1>
@@ -83,7 +83,7 @@ const BlogPostPage = async ({ params }: PageProps) => {
                 ))}
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full order-1 lg:order-2">
             <img
               src={post.imageUrl || "/temp/post-image.png"}
               className="w-full h-auto"
@@ -98,7 +98,7 @@ const BlogPostPage = async ({ params }: PageProps) => {
         </article>
 
         {relatedPosts.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-16  my-20">
             <h2 className="text-2xl font-bold chakra-petch text-brand-blue-600 mb-6">
               Postagens relacionadas
             </h2>

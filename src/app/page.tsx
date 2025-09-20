@@ -4,18 +4,19 @@ import { PostSection } from "@/components/Section/PostSection";
 import { GetInTouchSection } from "@/components/Section/GetInTouchSection";
 
 interface HomeProps {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
-export default function Home({ searchParams }: HomeProps) {
-  const currentPage = (searchParams && Number(searchParams?.page)) || 1;
+export default async function Home({ searchParams }: HomeProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
 
   return (
-    <main className="">
+    <main id="main-content" className="">
       <img
         src="/svg/gradient.svg"
         className="absolute inset-0 -z-10 mx-auto w-full"
-        alt=""
+        alt="Elemento decorativo de fundo"
       />
       <HeroSection />
       <FilterSection />

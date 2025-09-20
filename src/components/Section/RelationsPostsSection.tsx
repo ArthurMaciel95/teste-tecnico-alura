@@ -10,7 +10,7 @@ export const RelationsPostsSection = ({
   RelationsPosts,
 }: RelationsPostsSectionProps) => {
   return (
-    <section className="main_container mx-auto my-20">
+    <section className="  ">
       <div className="grid grid-cols-1  lg:grid-cols-3 gap-8">
         {RelationsPosts.map((post) => (
           <Card

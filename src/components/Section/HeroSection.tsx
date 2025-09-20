@@ -24,7 +24,7 @@ export const HeroSection = () => {
         desenvolvi!
       </p>
       <div className="mt-28">
-        <img src="/svg/square-detail.svg" alt="" />
+        <img src="/svg/square-detail.svg" alt="Elemento decorativo" />
       </div>
     </section>
   );

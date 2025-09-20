@@ -13,20 +13,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1,
         },
         {
-            url: `${baseUrl}/blog`,
+            url: `${baseUrl}blog`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
     ]
 
-    // URLs dinâmicas dos posts do blog
-    try {
-        const postsResponse = await apiService.getAllPosts({ limit: 100 })
-        const posts = postsResponse.posts
+    const postsPerPage = 9
+    const maxPages = 5
 
-        const postUrls: MetadataRoute.Sitemap = posts.map((post) => ({
-            url: `${baseUrl}/blog/${post.id}`,
+    try {
+        const allPosts = []
+
+
+        for (let page = 1; page <= maxPages; page++) {
+            const response = await apiService.getAllPosts({
+                limit: postsPerPage,
+                page: page,
+            })
+
+
+            if (!response.posts || response.posts.length === 0) break
+
+            allPosts.push(...response.posts)
+
+
+            if (response.posts.length < postsPerPage) break
+        }
+
+        const postUrls: MetadataRoute.Sitemap = allPosts.map((post) => ({
+            url: `${baseUrl}blog/${post.id}`,
             lastModified: post.createdAt ? new Date(post.createdAt) : new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -35,7 +52,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return [...staticUrls, ...postUrls]
     } catch (error) {
         console.error('Erro ao gerar sitemap:', error)
-        // Retorna apenas URLs estáticas em caso de erro
         return staticUrls
     }
 }

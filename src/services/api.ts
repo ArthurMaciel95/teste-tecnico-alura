@@ -4,7 +4,7 @@ const BASEURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 class ApiService {
   private async fetchData<T>(endpoint: string): Promise<T> {
-    console.log(`Fetching from: ${BASEURL}${endpoint}`);
+
     const response = await fetch(`${BASEURL}${endpoint}`, {
       method: 'GET',
       headers: {
@@ -26,7 +26,7 @@ class ApiService {
     try {
       const { limit = 6, page = 1 } = params || {};
       const data = await this.fetchData<ApiResponse>(`/api/posts?limit=${limit}&page=${page}`);
-      console.log(data);
+
       return data;
     } catch (error) {
       console.error('Erro ao buscar todos os posts:', error);
@@ -46,7 +46,7 @@ class ApiService {
 
   // GET /api/posts/category/[category] - Postagens por categoria
   async getPostsByCategory(category: string): Promise<Post[]> {
-    console.log(category)
+
     try {
       const data = await this.fetchData<ApiResponse>(
         `/api/posts/category/${encodeURIComponent(category)}`
@@ -59,17 +59,17 @@ class ApiService {
   }
 
   // GET /api/posts/tags/[tag] - Postagens por tag
-  async getPostsByTag(tag: string): Promise<Post[]> {
-    try {
-      const data = await this.fetchData<ApiResponse>(
-        `/api/posts/tags/${encodeURIComponent(tag)}`
-      );
-      return data.posts || [];
-    } catch (error) {
-      console.error(`Erro ao buscar posts da tag ${tag}:`, error);
-      return [];
-    }
-  }
+  // async getPostsByTag(tag: string): Promise<Post[]> {
+  //   try {
+  //     const data = await this.fetchData<ApiResponse>(
+  //       `/api/posts/tags/${encodeURIComponent(tag)}`
+  //     );
+  //     return data.posts || [];
+  //   } catch (error) {
+  //     console.error(`Erro ao buscar posts da tag ${tag}:`, error);
+  //     return [];
+  //   }
+  // }
 
   // GET /api/posts/id/[id] - Postagem específica por ID
   async getPostById(id: string): Promise<Post | null> {
@@ -83,15 +83,15 @@ class ApiService {
   }
 
   // Posts relacionados (com base em categoria ou gerais)
-  async getRelatedPosts(postId: string, slug?: string): Promise<Post[]> {
+  async getRelatedPosts(slug?: string): Promise<Post[]> {
     try {
       if (slug) {
-        const posts = await this.getPostsByCategory(slug?.toLocaleLowerCase());
-        return posts.filter((post) => post.id !== postId).slice(0, 3);
+        const posts = await this.getPostsByCategory(slug);
+        return posts
       }
 
-      const allPostsResponse = await this.getAllPosts({ limit: 50 }); // Buscar mais posts para relacionados
-      return allPostsResponse.posts.filter((post) => post.id !== postId).slice(0, 3);
+      const allPostsResponse = await this.getAllPosts({ limit: 3 }); // Buscar mais posts para relacionados
+      return allPostsResponse.posts;
     } catch (error) {
       console.error('Erro ao buscar posts relacionados:', error);
       return [];
@@ -121,11 +121,19 @@ class ApiService {
   }
 
   // Categorias disponíveis
-  async getCategories(): Promise<string[]> {
+  async getCategories(): Promise<{ slug: string; name: string }[]> {
     try {
       const postsResponse = await this.getAllPosts();
-      const categories = [...new Set(postsResponse.posts.map((post) => post.category.name))];
-      return categories.filter(Boolean);
+      const categoriesMap = new Map<string, { slug: string; name: string }>();
+
+      postsResponse.posts.forEach((post) => {
+        const { slug, name } = post.category;
+        if (!categoriesMap.has(slug)) {
+          categoriesMap.set(slug, { slug, name });
+        }
+      });
+
+      return Array.from(categoriesMap.values());
     } catch (error) {
       console.error('Erro ao buscar categorias:', error);
       return [];

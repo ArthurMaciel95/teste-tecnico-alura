@@ -16,7 +16,7 @@ export const Button = ({
   type = "button",
 }: ButtonProps) => {
   const baseClasses =
-    "text-sm cursor-pointer font-bold rounded-md px-4 py-2 transition";
+    "text-sm cursor-pointer font-bold rounded-md px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-brand-blue-300 focus:ring-offset-2";
   const activeClasses = isActive
     ? "text-white bg-brand-blue-600"
     : "text-white bg-brand-blue-500 hover:bg-brand-blue-600";

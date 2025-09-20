@@ -9,15 +9,20 @@ export const FilterSection = () => {
           Minha postagens
         </h3>
         <div className="relative ">
+          <label htmlFor="search-input" className="sr-only">
+            Buscar posts
+          </label>
           <input
+            id="search-input"
             type="text"
             placeholder="Buscar..."
-            className="h-10 border w-full border-brand-blue-500 outline-none rounded-md p-2 px-3.5"
+            className="h-10 border w-full border-brand-blue-500 outline-none rounded-md p-2 px-3.5 focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
+            aria-label="Campo de busca de posts"
           />
           <img
             src="/svg/search.svg"
-            alt="icone de busca"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
+            alt="Ícone de busca"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none"
           />
         </div>
       </div>
