@@ -1,5 +1,4 @@
 import { Post, ApiResponse } from '@/types/api';
-import { Console } from 'console';
 
 const BASEURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
