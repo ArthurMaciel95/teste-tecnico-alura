@@ -20,7 +20,6 @@ export const RelationsPostsSection = ({
             href={`/blog/${post.id}`}
             img={post.imageUrl || "/temp/post-image.png"}
             slug={`/blog/${post.id}`}
-            alt={post.title}
             description={post.content}
           />
         ))}

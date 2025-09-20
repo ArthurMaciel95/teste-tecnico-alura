@@ -40,8 +40,8 @@ export const FilterSectionAdvanced = ({
       if (selectedCategory === category) {
         // Se já estiver selecionada, remove o filtro
         setSelectedCategory("");
-        const allPosts = await apiService.getAllPosts();
-        onFilterChange(allPosts);
+        const allPostsResponse = await apiService.getAllPosts();
+        onFilterChange(allPostsResponse.posts);
       } else {
         // Aplica o filtro da categoria
         setSelectedCategory(category);
@@ -69,8 +69,8 @@ export const FilterSectionAdvanced = ({
           );
           onSearchChange(filteredPosts);
         } else {
-          const allPosts = await apiService.getAllPosts();
-          onSearchChange(allPosts);
+          const allPostsResponse = await apiService.getAllPosts();
+          onSearchChange(allPostsResponse.posts);
         }
       } else {
         // Realiza a busca
@@ -85,7 +85,7 @@ export const FilterSectionAdvanced = ({
   };
 
   return (
-    <section className="main_container mx-auto mt-20 flex justify-between">
+    <section className="main_container mx-auto lg:mt-20 flex justify-between flex-col md:flex-row gap-6">
       <div className="flex gap-8 items-center">
         <h3 className="text-brand-blue-600 chakra-petch font-bold text-2xl">
           Minhas postagens
@@ -114,8 +114,8 @@ export const FilterSectionAdvanced = ({
           {categories.map((category) => (
             <Button
               key={category}
-              onClick={() => handleCategoryFilter(category)}
-              isActive={selectedCategory === category}
+              onClick={() => handleCategoryFilter(category.toLowerCase())}
+              isActive={selectedCategory === category.toLowerCase()}
               disabled={isLoading}
             >
               {category}

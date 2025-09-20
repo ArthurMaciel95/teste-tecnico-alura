@@ -15,8 +15,8 @@ export default function BlogPage() {
   useEffect(() => {
     const loadInitialPosts = async () => {
       try {
-        const allPosts = await apiService.getAllPosts();
-        setFilteredPosts(allPosts);
+        const allPostsResponse = await apiService.getAllPosts();
+        setFilteredPosts(allPostsResponse.posts);
       } catch (error) {
         console.error("Erro ao carregar posts:", error);
       } finally {
@@ -49,7 +49,7 @@ export default function BlogPage() {
     <main className="min-h-screen">
       <img
         src="/svg/gradient.svg"
-        className="absolute inset-0 -z-10 mx-auto"
+        className="absolute inset-0 -z-10 mx-auto w-full"
         alt=""
       />
 

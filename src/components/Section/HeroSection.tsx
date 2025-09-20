@@ -2,7 +2,7 @@ import React from "react";
 
 export const HeroSection = () => {
   return (
-    <section className="flex flex-col items-center  mx-auto max-w-[675px] w-full text-center justify-center mt-100 sm:mt-20 ">
+    <section className="flex flex-col items-center  mx-auto max-w-[675px] w-full text-center justify-center mt-20 ">
       <img
         src="/img/avatar.png"
         className="w-[244px] h-[244px] rounded-full"

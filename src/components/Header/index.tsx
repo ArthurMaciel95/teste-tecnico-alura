@@ -8,7 +8,7 @@ export function Header() {
       <Link href="/">
         <div className="flex items-center gap-4">
           <Image src="/svg/logo.svg" alt="Logo" width={50} height={50} />
-          <h2 className="font-bold text-2xl chakra-petch text-brand-blue-600">
+          <h2 className="font-bold text-2xl chakra-petch text-brand-blue-600 hidden lg:block">
             FERNANDA MASCHETI
           </h2>
         </div>

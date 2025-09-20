@@ -2,10 +2,36 @@ import React from "react";
 import { apiService } from "@/services/api";
 import { RelationsPostsSection } from "@/components/Section/RelationsPostsSection";
 import { notFound } from "next/navigation";
-
+import type { Metadata, ResolvingMetadata } from "next";
 interface PageProps {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const id = params.id;
+
+  // fetch post information
+  const post = await apiService.getPostById(id);
+
+  return {
+    title: `FERNANDA MARSCHETI | ${post?.title}`,
+    description: `${post?.content?.substring(0, 160)}...`,
+    openGraph: {
+      title: `FERNANDA MARSCHETI | ${post?.title}`,
+      description: `${post?.content?.substring(0, 160)}...`,
+      images: [
+        {
+          url: post?.imageUrl || "/temp/post-image.png",
+          width: 1200,
+          height: 627,
+          alt: post?.title,
+        },
+      ],
+    },
   };
 }
 
@@ -24,10 +50,10 @@ const BlogPostPage = async ({ params }: PageProps) => {
   );
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen mt-20">
       <section className="main_container mx-auto py-20 relative">
         <div className="absolute   mx-auto -z-10">
-          <img src="/svg/gradient.svg" alt="" />
+          <img src="/svg/gradient.svg" className="w-full" alt="" />
         </div>
         <div className="grid grid-cols-2 gap-8">
           <div className="flex flex-col">

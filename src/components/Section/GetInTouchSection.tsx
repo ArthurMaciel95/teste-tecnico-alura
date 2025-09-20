@@ -4,8 +4,8 @@ import React from "react";
 export const GetInTouchSection = () => {
   return (
     <section className="main_container mx-auto mt-14 mb-10">
-      <div className="grid grid-cols-2">
-        <div>
+      <div className="flex flex-col justify-center items-center gap-10 lg:grid  lg:grid-cols-2">
+        <div className="text-center lg:text-left">
           <p className="chakra-petch text-brand-blue-500 font-bold">
             Vamos Conversar?
           </p>

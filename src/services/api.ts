@@ -21,16 +21,26 @@ class ApiService {
     return response.json();
   }
 
-  // GET /api/posts - Todas as postagens
-  async getAllPosts(params?: { limit?: number, page?: number }): Promise<Post[]> {
+  // GET /api/posts - Todas as postagens com paginação
+  async getAllPosts(params?: { limit?: number, page?: number }): Promise<ApiResponse> {
     try {
       const { limit = 6, page = 1 } = params || {};
       const data = await this.fetchData<ApiResponse>(`/api/posts?limit=${limit}&page=${page}`);
       console.log(data);
-      return data.posts || [];
+      return data;
     } catch (error) {
       console.error('Erro ao buscar todos os posts:', error);
-      return [];
+      return {
+        posts: [],
+        pagination: {
+          currentPage: 1,
+          totalPages: 1,
+          totalPosts: 0,
+          postsPerPage: params?.limit || 6,
+          hasNextPage: false,
+          hasPreviousPage: false
+        }
+      };
     }
   }
 
@@ -80,8 +90,8 @@ class ApiService {
         return posts.filter((post) => post.id !== postId).slice(0, 3);
       }
 
-      const allPosts = await this.getAllPosts({ limit: 3 }); // Buscar mais posts para relacionados
-      return allPosts.filter((post) => post.id !== postId).slice(0, 3);
+      const allPostsResponse = await this.getAllPosts({ limit: 50 }); // Buscar mais posts para relacionados
+      return allPostsResponse.posts.filter((post) => post.id !== postId).slice(0, 3);
     } catch (error) {
       console.error('Erro ao buscar posts relacionados:', error);
       return [];
@@ -91,10 +101,10 @@ class ApiService {
   // Busca de posts (client-side)
   async searchPosts(query: string): Promise<Post[]> {
     try {
-      const allPosts = await this.getAllPosts({ limit: 50 }); // Buscar mais posts para pesquisa
+      const allPostsResponse = await this.getAllPosts({ limit: 50 }); // Buscar mais posts para pesquisa
       const searchLower = query.toLowerCase();
 
-      return allPosts.filter(
+      return allPostsResponse.posts.filter(
         (post) =>
           post.title.toLowerCase().includes(searchLower) ||
           (post.content &&
@@ -113,8 +123,8 @@ class ApiService {
   // Categorias disponíveis
   async getCategories(): Promise<string[]> {
     try {
-      const posts = await this.getAllPosts();
-      const categories = [...new Set(posts.map((post) => post.category.name))];
+      const postsResponse = await this.getAllPosts();
+      const categories = [...new Set(postsResponse.posts.map((post) => post.category.name))];
       return categories.filter(Boolean);
     } catch (error) {
       console.error('Erro ao buscar categorias:', error);
@@ -125,8 +135,8 @@ class ApiService {
   // Tags disponíveis
   async getTags(): Promise<string[]> {
     try {
-      const posts = await this.getAllPosts();
-      const allTags = posts.flatMap((post) =>
+      const postsResponse = await this.getAllPosts();
+      const allTags = postsResponse.posts.flatMap((post) =>
         post.tags.map((tag) => tag.name)
       );
       const uniqueTags = [...new Set(allTags)];

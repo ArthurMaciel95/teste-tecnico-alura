@@ -3,8 +3,8 @@ import { Button } from "../Partials/Buttons/Button";
 
 export const FilterSection = () => {
   return (
-    <section className="main_container mx-auto mt-20 flex justify-between">
-      <div className="flex gap-8 items-center">
+    <section className="main_container mx-auto mt-20 flex justify-between flex-col md:flex-row gap-6">
+      <div className="flex gap-8 items-center flex-col lg:flex-row w-full md:w-auto">
         <h3 className="text-brand-blue-600 chakra-petch font-bold text-2xl">
           Minha postagens
         </h3>
@@ -21,7 +21,7 @@ export const FilterSection = () => {
           />
         </div>
       </div>
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center flex-col lg:flex-row w-full md:w-auto">
         <h5 className="text-brand-blue-600 chakra-petch font-bold text-lg">
           Categorias:
         </h5>
