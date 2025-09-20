@@ -29,18 +29,18 @@ export const metadata: Metadata = {
   authors: [{ name: "Fernanda Mascheti" }],
   creator: "Fernanda Mascheti",
   publisher: "Fernanda Mascheti",
-  metadataBase: new URL("https://fernanda-mascheti.vercel.app"),
+  metadataBase: new URL("https://teste-tecnico-alura-two.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Fernanda Mascheti - Desenvolvedora Front-end",
     description: "Portfolio da desenvolvedora front-end Fernanda Mascheti",
-    url: "https://fernanda-mascheti.vercel.app",
+    url: "https://teste-tecnico-alura-two.vercel.app",
     siteName: "Fernanda Mascheti",
     images: [
       {
-        url: "/seo.png",
+        url: "https://teste-tecnico-alura-two.vercel.app/seo.png",
         width: 1200,
         height: 630,
         alt: "Fernanda Mascheti - Desenvolvedora Front-end",
