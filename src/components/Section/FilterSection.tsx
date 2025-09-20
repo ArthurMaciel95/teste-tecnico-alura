@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../Partials/Buttons/Button";
 
 export const FilterSection = () => {
   return (
@@ -25,15 +26,9 @@ export const FilterSection = () => {
           Categorias:
         </h5>
         <div className="flex gap-4 ">
-          <button className="text-sm text-white font-bold   rounded-md px-4 py-2 bg-brand-blue-500 hover:bg-brand-blue-600 transition">
-            IA
-          </button>
-          <button className="text-sm text-white font-bold   rounded-md px-4 py-2 bg-brand-blue-500 hover:bg-brand-blue-600 transition">
-            Front-end
-          </button>
-          <button className="text-sm text-white font-bold   rounded-md px-4 py-2 bg-brand-blue-500 hover:bg-brand-blue-600 transition">
-            Back-end
-          </button>
+          <Button>IA</Button>
+          <Button>Front-end</Button>
+          <Button>Back-end</Button>
         </div>
       </div>
     </section>

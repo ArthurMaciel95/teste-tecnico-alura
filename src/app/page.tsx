@@ -1,6 +1,7 @@
 import { FilterSection } from "@/components/Section/FilterSection";
 import { HeroSection } from "../components/Section/HeroSection";
 import { PostSection } from "@/components/Section/PostSection";
+import { GetInTouchSection } from "@/components/Section/GetInTouchSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <FilterSection />
       <PostSection />
+      <GetInTouchSection />
     </main>
   );
 }
