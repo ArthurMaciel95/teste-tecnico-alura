@@ -1,4 +1,4 @@
-# 📘 Projeto [NOME DO PROJETO]
+# 📘 TESTE TÉCNICO ALURA
 
 Este projeto foi desenvolvido utilizando **Next.js 15** com foco em performance, responsividade, acessibilidade e boas práticas de SEO.  
 O layout foi implementado de acordo com o design fornecido no Figma, garantindo fidelidade visual e uma ótima experiência de usuário.
