@@ -83,10 +83,10 @@ class ApiService {
   }
 
   // Posts relacionados (com base em categoria ou gerais)
-  async getRelatedPosts(postId: string, category?: string): Promise<Post[]> {
+  async getRelatedPosts(postId: string, slug?: string): Promise<Post[]> {
     try {
-      if (category) {
-        const posts = await this.getPostsByCategory(category);
+      if (slug) {
+        const posts = await this.getPostsByCategory(slug?.toLocaleLowerCase());
         return posts.filter((post) => post.id !== postId).slice(0, 3);
       }
 
