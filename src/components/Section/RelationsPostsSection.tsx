@@ -1,10 +1,14 @@
 import React from "react";
 import { Card } from "../Partials/Card";
-import { RelationsPostsProps } from "@/@types";
+import { Post } from "@/types/api";
+
+interface RelationsPostsSectionProps {
+  RelationsPosts: Post[];
+}
 
 export const RelationsPostsSection = ({
   RelationsPosts,
-}: RelationsPostsProps) => {
+}: RelationsPostsSectionProps) => {
   return (
     <section className="main_container mx-auto my-20">
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -12,12 +16,12 @@ export const RelationsPostsSection = ({
           <Card
             key={post.id}
             title={post.title}
-            category={post.category}
+            category={post.category.name}
             href={`/blog/${post.id}`}
-            img="/temp/post-image.png"
-            slug={post.slug}
-            alt="computador"
-            description={post.description}
+            img={post.imageUrl || "/temp/post-image.png"}
+            slug={`/blog/${post.id}`}
+            alt={post.title}
+            description={post.content}
           />
         ))}
       </div>
