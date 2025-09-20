@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { apiService } from '@/services/api'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://fernanda-mascheti.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://teste-tecnico-alura-two.vercel.app'
 
     // URLs estáticas
     const staticUrls: MetadataRoute.Sitemap = [

@@ -187,7 +187,7 @@ npm run lint     # Executa linting do código
 
 O projeto consome a API externa para carregar os posts:
 
-**Base URL:** `https://nextjs-alura-teste.vercel.app`
+**Base URL:** `https://teste-tecnico-alura-two.vercel.app`
 
 ### Endpoints Utilizados:
 
@@ -244,7 +244,7 @@ O projeto consome a API externa para carregar os posts:
 ### Variáveis de Ambiente:
 
 ```env
-NEXT_PUBLIC_API_BASE_URL=https://nextjs-alura-teste.vercel.app
+NEXT_PUBLIC_API_BASE_URL=https://teste-tecnico-alura-two.vercel.app
 ```
 
 ---
