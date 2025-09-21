@@ -242,7 +242,7 @@ export function PostList({
 
       {/* Paginação */}
       {!searchQuery && totalPages > 1 && (
-        <div className="flex justify-center mt-12 gap-2">
+        <div className="flex justify-center mt-12 gap-2 flex-wrap">
           {/* Página anterior */}
           {currentPage > 1 && (
             <button
