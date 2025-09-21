@@ -120,7 +120,7 @@ const BlogPostPage = async ({ params }: PageProps) => {
     <main className="">
       <img
         src="/svg/gradient.svg"
-        className="absolute w-full top-0 z-10  inset-0 mx-auto -z-10"
+        className="absolute w-full top-0 z-10 h-[800px] lg:h-auto inset-0 mx-auto -z-10"
         alt="Elemento decorativo de fundo"
       />
       <BlogPostContent post={post} relatedPosts={relatedPosts} />

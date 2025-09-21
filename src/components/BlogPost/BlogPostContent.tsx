@@ -20,7 +20,7 @@ export const BlogPostContent = ({
       <Fade cascade duration={400} delay={1000} triggerOnce>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reverse">
           <div className="flex flex-col lg:order-1 order-2">
-            <h1 className="text-5xl font-bold chakra-petch mb-6 text-brand-blue-600 max-w-[536px]">
+            <h1 className="lg:text-5xl text-4xl font-bold chakra-petch mb-6 text-brand-blue-600 max-w-[536px]">
               {post.title}
             </h1>
 

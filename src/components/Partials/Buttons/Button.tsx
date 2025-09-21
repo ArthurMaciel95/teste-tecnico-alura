@@ -22,7 +22,7 @@ export const Button = ({
   const activeClasses =
     isActive || isSelected
       ? "text-white bg-brand-blue-500"
-      : "text-white bg-brand-blue-500 hover:bg-brand-blue-600";
+      : "text-white bg-brand-blue-500 hover:bg-brand-blue-200";
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
 
   return (

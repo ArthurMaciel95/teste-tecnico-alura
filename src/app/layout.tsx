@@ -98,7 +98,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" data-theme="light">
+    <html lang="pt-BR">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#2563eb" />
@@ -110,13 +110,12 @@ export default function RootLayout({
                   const savedTheme = localStorage.getItem('theme');
                   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                   
-                  if (savedTheme === 'dark') {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                  } else if (savedTheme === 'light') {
-                    document.documentElement.setAttribute('data-theme', 'light');
+                  if (savedTheme === 'dark' || savedTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
                   } else if (!savedTheme || savedTheme === 'system') {
-                    // Usar preferência do sistema
-                    document.documentElement.setAttribute('data-theme', systemTheme);
+                    if (systemTheme === 'dark') {
+                      document.documentElement.removeAttribute('data-theme');
+                    }
                   }
                 } catch (error) {
                   console.warn('Erro ao inicializar tema:', error);

@@ -38,9 +38,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const categories = await apiService.getCategories();
 
   return (
-    <main id="main-content" className="relative">
+    <main id="main-content" className="relative ">
       <HeroSection />
-
       <PostList
         posts={postsResponse.posts}
         categories={categories}

@@ -3,10 +3,10 @@ import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
 export const HeroSection = () => {
   return (
-    <section className="flex flex-col items-center mx-auto max-w-[675px] w-full text-center justify-center mt-20">
+    <section className="flex flex-col items-center mx-auto max-w-[675px] w-full text-center justify-center mt-20 ">
       <img
         src="/svg/gradient.svg"
-        className="absolute  -z-10 mx-auto w-full"
+        className="absolute -z-10 mx-auto lg:h-auto h-[400px] w-full top-0 lg:top-auto"
         alt="Elemento decorativo de fundo"
       />
       <Zoom duration={800} delay={200} triggerOnce>
@@ -18,7 +18,7 @@ export const HeroSection = () => {
       </Zoom>
 
       <Fade duration={600} delay={600} triggerOnce>
-        <p className="my-6 text-brand-blue-500 font-bold">
+        <p className="my-6 text-brand-blue-500 font-bold chakra-petch ">
           Olá, meu nome é Fernanda_
         </p>
       </Fade>
