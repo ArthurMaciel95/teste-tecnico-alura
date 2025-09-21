@@ -42,25 +42,13 @@
   }
 }
 
+/* ---------- THEME ---------- */
 :root {
   /* Light theme (padrão) */
   --background: #ffffff;
   --foreground: #171717;
-  --background-secondary: #f8f9fa;
-  --border: #e5e7eb;
-  --border-secondary: #d1d5db;
-  --muted: #6b7280;
-  --muted-foreground: #4b5563;
-  --accent: #f3f4f6;
-  --accent-foreground: #1f2937;
-  --card: #ffffff;
-  --card-foreground: #171717;
-  --primary: #1ca7c8;
-  --primary-foreground: #ffffff;
-  --secondary: #6e859f;
-  --secondary-foreground: #ffffff;
 
-  /* Cores da marca (mantidas) */
+  /* Brand colors */
   --color-brand-blue-300: #6e859f;
   --color-brand-blue-500: #1ca7c8;
   --color-brand-blue-600: #284260;
@@ -70,76 +58,35 @@
 
 [data-theme="dark"] {
   /* Dark theme */
-  background-color: #0a0d14;
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --background-secondary: #1a1a1a;
-  --border: #2a2a2a;
-  --border-secondary: #3a3a3a;
-  --muted: #9ca3af;
-  --muted-foreground: #d1d5db;
-  --accent: #1f2937;
-  --accent-foreground: #f9fafb;
-  --card: #111111;
-  --card-foreground: #ededed;
-  --primary: #22d3ee;
-  --primary-foreground: #0a0a0a;
-  --secondary: #8b9dc3;
-  --secondary-foreground: #0a0a0a;
+  --background: #0a0d14;
+  --foreground: #f3f4f6;
 
-  /* Cores da marca ajustadas para dark mode */
-  --color-brand-blue-300: #8b9dc3;
-  --color-brand-blue-500: #22d3ee;
-  --color-brand-blue-600: #60a5fa;
-  --color-brand-gray-100: #d1d5db;
-  --color-brand-purple: #a78bfa;
+  /* Brand colors (dark adjusted) */
+  --color-brand-blue-300: #e0e0e0; /* azul mais vibrante */
+  --color-brand-blue-500: #22d3ee; /* ciano */
+  --color-brand-blue-600: #ffffff; /* azul claro */
+  --color-brand-gray-100: #9ca3af; /* cinza claro */
+  --color-brand-purple: #a78bfa; /* roxo suave */
 }
 
+/* Caso o usuário prefira dark mode e não tenha setado manualmente */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    /* Dark theme automático quando preferência do sistema é dark */
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --background-secondary: #1a1a1a;
-    --border: #2a2a2a;
-    --border-secondary: #3a3a3a;
-    --muted: #9ca3af;
-    --muted-foreground: #d1d5db;
-    --accent: #1f2937;
-    --accent-foreground: #f9fafb;
-    --card: #111111;
-    --card-foreground: #ededed;
-    --primary: #22d3ee;
-    --primary-foreground: #0a0a0a;
-    --secondary: #8b9dc3;
-    --secondary-foreground: #0a0a0a;
+    --background: #0a0d14;
+    --foreground: #f3f4f6;
 
-    /* Cores da marca ajustadas para dark mode */
-    --color-brand-blue-300: #132239;
+    --color-brand-blue-300: #e0e0e0;
     --color-brand-blue-500: #22d3ee;
-    --color-brand-blue-600: #60a5fa;
-    --color-brand-gray-100: #d1d5db;
+    --color-brand-blue-600: #ffffff;
+    --color-brand-gray-100: #9ca3af;
     --color-brand-purple: #a78bfa;
   }
 }
 
+/* Disponibiliza pro Tailwind */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-background-secondary: var(--background-secondary);
-  --color-border: var(--border);
-  --color-border-secondary: var(--border-secondary);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
   --color-brand-blue-300: var(--color-brand-blue-300);
   --color-brand-blue-500: var(--color-brand-blue-500);
   --color-brand-blue-600: var(--color-brand-blue-600);
@@ -147,10 +94,27 @@
   --color-brand-purple: var(--color-brand-purple);
 }
 
+/* Disponibiliza pro Tailwind */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-blue-300: var(--color-brand-blue-300);
+  --color-brand-blue-500: var(--color-brand-blue-500);
+  --color-brand-blue-600: var(--color-brand-blue-600);
+  --color-brand-gray-100: var(--color-brand-gray-100);
+  --color-brand-purple: var(--color-brand-purple);
+}
+
+/* ---------- GLOBAL ---------- */
+* {
+  scroll-behavior: smooth;
+  scroll-margin-top: 100px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Inter, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

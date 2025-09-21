@@ -4,6 +4,11 @@ import { Fade, Slide, Zoom } from "react-awesome-reveal";
 export const HeroSection = () => {
   return (
     <section className="flex flex-col items-center mx-auto max-w-[675px] w-full text-center justify-center mt-20">
+      <img
+        src="/svg/gradient.svg"
+        className="absolute  -z-10 mx-auto w-full"
+        alt="Elemento decorativo de fundo"
+      />
       <Zoom duration={800} delay={200} triggerOnce>
         <img
           src="/img/avatar.png"

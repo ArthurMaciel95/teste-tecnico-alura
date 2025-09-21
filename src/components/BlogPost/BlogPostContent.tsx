@@ -15,7 +15,7 @@ export const BlogPostContent = ({
   relatedPosts,
 }: BlogPostContentProps) => {
   return (
-    <section className="main_container mx-auto py-20 mt-20 ">
+    <section className="main_container mx-auto py-20 mt-20 mb-10 relative z-10">
       {/* Hero Section com título e imagem */}
       <Fade cascade duration={400} delay={1000} triggerOnce>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reverse">
@@ -72,7 +72,7 @@ export const BlogPostContent = ({
 
       {/* Posts relacionados */}
       {relatedPosts.length > 0 && (
-        <div className="mt-16 my-20">
+        <div className="mt-16 my-20" id="blog">
           <Slide direction="up" duration={600} delay={200} triggerOnce>
             <h2 className="text-2xl font-bold chakra-petch text-brand-blue-600 mb-6">
               Postagens relacionadas

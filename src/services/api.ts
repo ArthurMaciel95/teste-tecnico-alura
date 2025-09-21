@@ -44,17 +44,30 @@ class ApiService {
     }
   }
 
-  // GET /api/posts/category/[category] - Postagens por categoria
-  async getPostsByCategory(category: string): Promise<Post[]> {
-
+  // GET /api/posts/category/[category] - Postagens por categoria com paginação
+  async getPostsByCategory(
+    category: string,
+    params?: { limit?: number, page?: number }
+  ): Promise<ApiResponse> {
     try {
+      const { limit = 6, page = 1 } = params || {};
       const data = await this.fetchData<ApiResponse>(
-        `/api/posts/category/${encodeURIComponent(category)}`
+        `/api/posts/category/${encodeURIComponent(category)}?limit=${limit}&page=${page}`
       );
-      return data.posts || [];
+      return data;
     } catch (error) {
       console.error(`Erro ao buscar posts da categoria ${category}:`, error);
-      return [];
+      return {
+        posts: [],
+        pagination: {
+          currentPage: 1,
+          totalPages: 1,
+          totalPosts: 0,
+          postsPerPage: params?.limit || 6,
+          hasNextPage: false,
+          hasPreviousPage: false
+        }
+      };
     }
   }
 
@@ -86,8 +99,8 @@ class ApiService {
   async getRelatedPosts(slug?: string): Promise<Post[]> {
     try {
       if (slug) {
-        const posts = await this.getPostsByCategory(slug);
-        return posts.slice(0, 3);
+        const postsResponse = await this.getPostsByCategory(slug, { limit: 3 });
+        return postsResponse.posts.slice(0, 3);
       }
 
       const allPostsResponse = await this.getAllPosts({ limit: 3 }); // Buscar 3 posts para relacionados
