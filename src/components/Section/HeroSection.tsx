@@ -6,7 +6,7 @@ export const HeroSection = () => {
     <section className="flex flex-col items-center mx-auto max-w-[675px] w-full text-center justify-center mt-20 ">
       <img
         src="/svg/gradient.svg"
-        className="absolute -z-10 mx-auto lg:h-auto h-[400px] w-full top-0 lg:top-auto"
+        className="absolute -z-10 mx-auto  h-full w-full  lg:top-auto"
         alt="Elemento decorativo de fundo"
       />
       <Zoom duration={800} delay={200} triggerOnce>
