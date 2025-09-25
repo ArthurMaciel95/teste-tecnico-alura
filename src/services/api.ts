@@ -71,19 +71,6 @@ class ApiService {
     }
   }
 
-  // GET /api/posts/tags/[tag] - Postagens por tag
-  // async getPostsByTag(tag: string): Promise<Post[]> {
-  //   try {
-  //     const data = await this.fetchData<ApiResponse>(
-  //       `/api/posts/tags/${encodeURIComponent(tag)}`
-  //     );
-  //     return data.posts || [];
-  //   } catch (error) {
-  //     console.error(`Erro ao buscar posts da tag ${tag}:`, error);
-  //     return [];
-  //   }
-  // }
-
   // GET /api/posts/id/[id] - Postagem específica por ID
   async getPostById(id: string): Promise<Post | null> {
     try {

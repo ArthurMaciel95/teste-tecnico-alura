@@ -1,16 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Fade } from "react-awesome-reveal";
-
-interface CardProps {
-  img?: string;
-  title?: string;
-  description?: string;
-  category?: string;
-  href?: string;
-  slug?: string;
-  animationDelay?: number;
-}
+import { CardProps } from "@/types";
 
 export const Card = ({
   img,
